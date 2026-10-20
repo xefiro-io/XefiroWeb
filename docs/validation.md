@@ -25,9 +25,18 @@ Local preview: http://127.0.0.1:4173. Rebuild and restart it with the README com
 ## Publication preparation
 
 - Source audit completed against Boryn commit `f0c2bf4a2abe81b300bb8d7791d6c33a07f03a9d`; evidence and corrections recorded in `review.md`.
-- Final candidate policy and privacy labels prepared locally. Date is staged for 20 October 2026 and must be checked again before first public publication. Developer review is pending; preparation is not publication approval.
+- Final candidate policy and privacy labels prepared locally. Date is staged for 20 October 2026 and must be checked again before first public publication. Developer review was subsequently completed; see the public-release section below.
 - Release tests now reject draft/review placeholders on every public route and require a valid effective date plus deletion, backup, support-retention and TestFlight disclosures. All three test groups passed.
 - Browser repeated all four routes at 375, 768 and 1440 CSS pixels; all 12 combinations had zero horizontal overflow and no script tags.
 - Existing palette, styling, layout, reduced-motion rules and app feature claims are unchanged. Initial contrast calculations and accessibility limits above remain applicable.
 - Basic source scan found no private-key blocks or common credential patterns. Only the intended source/docs/tests are candidates for Git; generated `dist/`, dependencies and macOS artifacts are ignored.
-- GitHub and Cloudflare sign-in are required before repository creation/deployment. No public deployment, DNS edit or mailbox transmission has occurred.
+- At this preparation checkpoint, GitHub/Cloudflare sign-in was still pending. The completed release below supersedes that state.
+
+
+## Completed public release
+
+Developer approved the policy after the explicit TestFlight feedback-email clarification. The exact wording was applied and release checks passed. Source is public at https://github.com/xefiro-io/XefiroWeb; the site is live at https://xefiro.io with the 20 October 2026 policy date.
+
+Automatic GitHub → Pages deployment, HTTPS routes/reloads, clean redirect, styled 404, sitemap/robots, final privacy labels and production contact link were verified. A repeat 12-case responsive production check had zero horizontal overflow and zero scripts. Inherited Cloudflare RUM was disabled and email obfuscation avoided only for the public support link; final browser network contained no third-party or script requests. Support contact remained readable with JavaScript disabled. Original mail DNS was preserved.
+
+Detailed deployment identifiers, runtime, rollback instructions, test limits and separate Boryn/mailbox handoff are recorded in `deployment.md`.
