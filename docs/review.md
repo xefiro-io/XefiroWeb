@@ -34,6 +34,6 @@ Audited 20 October 2026 against the clean Boryn checkout at commit `f0c2bf4a2abe
 
 ## Publication gate and separate handoff
 
-Developer review of the prepared final policy is pending. Do not push the policy to a public repository or deploy until that review is complete. Its prepared effective date is 20 October 2026; update it to the Singapore date of the actual first public publication if publication occurs later. GitHub and Cloudflare are awaiting account sign-in.
+Developer approved publication on 20 October 2026 after requesting the explicit public-link TestFlight feedback/email exception. That wording has been applied. Boryn remains clean at the audited commit above. The policy effective date is 20 October 2026; update it if actual first publication moves to a later Singapore date.
 
 Mailbox inbound/outbound testing and Boryn/App Store Connect URL coordination remain separate handoff work; neither is represented as completed. No Boryn code or Notion content was modified.
