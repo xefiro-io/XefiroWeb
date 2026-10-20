@@ -2,13 +2,13 @@
 
 ## Current status
 
-Release candidate prepared locally. Public policy approval and GitHub/Cloudflare account sign-in are pending. No public repository or deployment is claimed by this document.
+Policy approved and source published on 20 October 2026. Public GitHub repository and `main` verified. Cloudflare Pages first deployment succeeded; xefiro.io serves the site over HTTPS. Production checks found inherited zone-level analytics and email-obfuscation injection; these are being corrected before final acceptance.
 
 ## Intended deployment contract
 
 | Setting | Value |
 | --- | --- |
-| Repository | `https://github.com/xefiro-io/XefiroWeb` (intended, not yet created/verified) |
+| Repository | `https://github.com/xefiro-io/XefiroWeb` (created and verified public) |
 | Visibility | Public, confirmed by owner |
 | Default/production branch | `main` |
 | Git transport | `git@github-xefiro:xefiro-io/XefiroWeb.git` using existing local SSH host configuration |
@@ -16,9 +16,11 @@ Release candidate prepared locally. Public policy approval and GitHub/Cloudflare
 | Root | Repository root |
 | Build | `npm run build` |
 | Output | `dist` |
-| Runtime | Supported Node >=20; record the actual successful Pages runtime on deployment |
+| Runtime | Node 22.16.0, npm 10.9.2 observed in successful Pages build |
 | Canonical origin | `https://xefiro.io` |
-| Pages URL, production commit | Not yet available; record actual values after successful deployment |
+| Pages URL | `https://xefiroweb.pages.dev` (HTTPS routes verified) |
+| Initial source commit | `4cf9b51384a60a455e151f4fd6e97f3fe65bc990` |
+| Initial successful deployment | `63df7634-94db-4fea-8248-5baa01e8a535` |
 
 ## Resume sequence
 
@@ -39,3 +41,12 @@ After the first successful deployment, retain its commit and deployment identifi
 ## Separate release tasks
 
 Verify inbound/outbound support mailbox delivery without treating mailto validation as a delivery test. Coordinate the final privacy/support URLs and App Store privacy questionnaire through the Boryn release workflow. Neither task is marked completed here.
+
+
+## Production configuration findings
+
+The first apex-domain checks found Cloudflare's pre-existing zone Web Analytics automatic setup injecting a RUM beacon even though Pages-project Web Analytics was disabled. The zone RUM setting was changed to Disable as required by this site's no-tracking contract. The original RUM setting was enabled outside the EU; no analytics was added to the source.
+
+Cloudflare's default email obfuscation also injected decoding JavaScript on contact pages. The shared public support link now uses Cloudflare's documented `email_off` HTML comment boundary, preserving readable mailto contact without changing zone-wide security settings. Recheck rendered production HTML/network after the next deployment. See [email obfuscation documentation](https://developers.cloudflare.com/waf/tools/scrape-shield/email-address-obfuscation/).
+
+DNS comparison: the five Google MX destinations, their displayed priorities, DKIM, SPF and Google verification records remain unchanged. Only the proxied apex CNAME to `xefiroweb.pages.dev` was added (8 → 9 records). No www record or unrelated redirect was added.

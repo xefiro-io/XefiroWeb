@@ -1,6 +1,7 @@
 export const privacyEffectiveDate = '2026-10-20';
 const privacyEffectiveDateLabel = new Intl.DateTimeFormat('en-SG', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Singapore' }).format(new Date(`${privacyEffectiveDate}T00:00:00+08:00`));
-const email = '<a href="mailto:boryn_support@xefiro.io?subject=Boryn%20Support">boryn_support@xefiro.io</a>';
+// Keep the public support address usable without Cloudflare’s email-decoding JavaScript.
+const email = '<!--email_off--><a href="mailto:boryn_support@xefiro.io?subject=Boryn%20Support">boryn_support@xefiro.io</a><!--/email_off-->';
 const link = (href, label) => `<a class="arrow-link" href="${href}">${label}<span aria-hidden="true">↗</span></a>`;
 const docSection = (id, title, body) => `<section id="${id}"><h2>${title}</h2>${body}</section>`;
 const document = (label, title, intro, sections, notice = '') => `
